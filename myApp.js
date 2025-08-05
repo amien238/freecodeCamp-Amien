@@ -4,51 +4,18 @@ const app = express();
 
 
 
+app.use(helmet.hidePoweredBy()); //Nếu không sử dụng dòng code này, web sẽ hiển thị thông tin về Express.js trong tiêu đề HTTP. x-powered-by="Express"
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+app.get('/', (req, res) => {
+  res.send('Hello world');
+});
 
 
 
 module.exports = app;
+
+
 const api = require('./server.js');
 app.use(express.static('public'));
 app.disable('strict-transport-security');
@@ -60,3 +27,5 @@ let port = process.env.PORT || 3000;
 app.listen(port, () => {
   console.log(`Your app is listening on port ${port}`);
 });
+
+
