@@ -10,14 +10,12 @@ app.use(helmet.hidePoweredBy());
 // app.use(helmet.frameguard({ action: 'deny' }));
 // app.use(helmet.xssFilter({}));
 // app.use(helmet.noSniff());
-app.use(helmet.ieNoOpen());
+// app.use(helmet.ieNoOpen());
 
-// app.use(helmet.hsts({
-//   maxAge: 31536000, // 1 year in seconds
-//   includeSubDomains: true, // Apply to all subdomains
-//   preload: true // Allow preloading of HSTS
+var ninetyDaysInSeconds = 90*24*60*60;
+app.use(helmet.hsts({ maxAge: ninetyDaysInSeconds, force: true }));
 
-// }));
+
 // app.use(helmet.referrerPolicy({ policy: 'no-referrer' }));
 // app.use(helmet.contentSecurityPolicy({
 //   directives: {
