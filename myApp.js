@@ -14,18 +14,18 @@ app.use(helmet.hidePoweredBy());
 // app.use(helmet.hsts({ maxAge: ninetyDaysInSeconds, force: true }));
 
 // app.use(helmet.referrerPolicy({ policy: 'no-referrer' }));
-// app.use(helmet.contentSecurityPolicy({
-//   directives: {
-//     defaultSrc: ["'self'"],
-//     scriptSrc: ["'self'", "'unsafe-inline'"],
-//     styleSrc: ["'self'", "'unsafe-inline'"],
-//     imgSrc: ["'self'", "data:"],
-//     connectSrc: ["'self'"],
-//     fontSrc: ["'self'"],
-//     objectSrc: ["'none'"],
-//     frameAncestors: ["'none'"]
-//   }
-// }));
+app.use(helmet.contentSecurityPolicy({
+  directives: {
+    defaultSrc: ["'self'"],
+    scriptSrc: ["'self'", "trusted-cdn.com"],
+    styleSrc: ["'self'", "'unsafe-inline'"],
+    imgSrc: ["'self'", "data:"],
+    connectSrc: ["'self'"],
+    fontSrc: ["'self'"],
+    objectSrc: ["'none'"],
+    frameAncestors: ["'none'"]
+  }
+}));
 // app.use(helmet.dnsPrefetchControl());
 // app.use(helmet.expectCt({
 //   maxAge: 30, // 30 seconds
@@ -37,7 +37,7 @@ app.use(helmet.hidePoweredBy());
 // app.use(helmet.crossOriginEmbedderPolicy({ policy: 'require-corp' }));
 // app.use(helmet.crossOriginResourcePolicy({ policy: 'same-origin' }));
 // app.use(helmet.hidePoweredBy({ setTo: 'PHP 4.2.0' })); // Example of custom hidePoweredBy
-app.use(helmet.noCache()); // Disable caching
+// app.use(helmet.noCache()); // Disable caching
 // app.use(helmet.ieNoOpen()); // Prevent IE from opening untrusted content
 
 
