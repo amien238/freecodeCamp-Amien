@@ -10,8 +10,6 @@ app.use(helmet.hidePoweredBy());
 // app.use(helmet.frameguard({ action: 'deny' }));
 // app.use(helmet.xssFilter({}));
 // app.use(helmet.noSniff());
-// app.use(helmet.ieNoOpen());
-
 // var ninetyDaysInSeconds = 90*24*60*60;
 // app.use(helmet.hsts({ maxAge: ninetyDaysInSeconds, force: true }));
 
@@ -28,7 +26,7 @@ app.use(helmet.hidePoweredBy());
 //     frameAncestors: ["'none'"]
 //   }
 // }));
-app.use(helmet.dnsPrefetchControl());
+// app.use(helmet.dnsPrefetchControl());
 // app.use(helmet.expectCt({
 //   maxAge: 30, // 30 seconds
 //   enforce: true,
@@ -39,7 +37,7 @@ app.use(helmet.dnsPrefetchControl());
 // app.use(helmet.crossOriginEmbedderPolicy({ policy: 'require-corp' }));
 // app.use(helmet.crossOriginResourcePolicy({ policy: 'same-origin' }));
 // app.use(helmet.hidePoweredBy({ setTo: 'PHP 4.2.0' })); // Example of custom hidePoweredBy
-// app.use(helmet.noCache()); // Disable caching
+app.use(helmet.noCache()); // Disable caching
 // app.use(helmet.ieNoOpen()); // Prevent IE from opening untrusted content
 
 
