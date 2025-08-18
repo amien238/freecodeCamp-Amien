@@ -14,12 +14,36 @@ app.use(helmet.hidePoweredBy());
 // app.use(helmet.hsts({ maxAge: ninetyDaysInSeconds, force: true }));
 
 // app.use(helmet.referrerPolicy({ policy: 'no-referrer' }));
-app.use(helmet.contentSecurityPolicy({
-  directives: {
-    defaultSrc: ["'self'"],
-    scriptSrc: ["'self'", 'trusted-cdn.com'],
-  }
+// app.use(helmet.contentSecurityPolicy({
+//   directives: {
+//     defaultSrc: ["'self'"],
+//     scriptSrc: ["'self'", 'trusted-cdn.com'],
+//   }
+// }));
+app.use(helmet({
+  hidePoweredBy: true,
+  frameguard: { action: 'deny' },
+  xssFilter: true,
+  noSniff: true,
+  ieNoOpen: true,
+  hsts: { maxAge: 7776000 }, // 90 days
+  dnsPrefetchControl: true,
+  noCache: true,
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", 'trusted-cdn.com'],
+      styleSrc: ["'self'", "'unsafe-inline'"],
+      imgSrc: ["'self'", "data:"],
+      connectSrc: ["'self'"],
+      fontSrc: ["'self'"],
+      objectSrc: ["'none'"],
+      frameAncestors: ["'none'"]
+    }
+
+  },
 }));
+
 // app.use(helmet.dnsPrefetchControl());
 // app.use(helmet.expectCt({
 //   maxAge: 30, // 30 seconds
