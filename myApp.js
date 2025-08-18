@@ -1,7 +1,7 @@
-const express = require('express');
-const helmet = require('helmet');
+var express = require('express');
+var helmet = require('helmet');
 
-const app = express();
+var app = express();
 
 // ✅ Cài middleware chống clickjacking ngay sau khi khởi tạo app
 app.use(helmet.frameguard({ action: 'deny' }));
