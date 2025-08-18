@@ -12,9 +12,8 @@ app.use(helmet.hidePoweredBy());
 // app.use(helmet.noSniff());
 // app.use(helmet.ieNoOpen());
 
-var ninetyDaysInSeconds = 90*24*60*60;
-app.use(helmet.hsts({ maxAge: ninetyDaysInSeconds, force: true }));
-
+// var ninetyDaysInSeconds = 90*24*60*60;
+// app.use(helmet.hsts({ maxAge: ninetyDaysInSeconds, force: true }));
 
 // app.use(helmet.referrerPolicy({ policy: 'no-referrer' }));
 // app.use(helmet.contentSecurityPolicy({
@@ -29,7 +28,7 @@ app.use(helmet.hsts({ maxAge: ninetyDaysInSeconds, force: true }));
 //     frameAncestors: ["'none'"]
 //   }
 // }));
-// app.use(helmet.dnsPrefetchControl({ allow: false }));
+app.use(helmet.dnsPrefetchControl());
 // app.use(helmet.expectCt({
 //   maxAge: 30, // 30 seconds
 //   enforce: true,
