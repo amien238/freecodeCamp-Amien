@@ -9,8 +9,8 @@ app.use(helmet());
 app.use(helmet.hidePoweredBy());
 // app.use(helmet.frameguard({ action: 'deny' }));
 // app.use(helmet.xssFilter({}));
-app.use(helmet.noSniff());
-// app.use(helmet.ieNoOpen());
+// app.use(helmet.noSniff());
+app.use(helmet.ieNoOpen());
 
 // app.use(helmet.hsts({
 //   maxAge: 31536000, // 1 year in seconds
