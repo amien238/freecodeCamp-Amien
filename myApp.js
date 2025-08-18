@@ -3,19 +3,18 @@ const helmet = require('helmet');
 
 const app = express();
 
+// ✅ Cài middleware chống clickjacking ngay sau khi khởi tạo app
+app.use(helmet.frameguard({ action: 'deny' }));
+
 module.exports = app;
+
 const api = require('./server.js');
 app.use(express.static('public'));
 app.disable('strict-transport-security');
 app.use('/_api', api);
+
 app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
-});
-
-app.use(helmet.frameguard({ action: 'deny' })); 
-
-app.get('/', (req, res) => {
-  res.send('Hello, security!');
 });
 
 let port = process.env.PORT || 3000;
