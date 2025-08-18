@@ -18,12 +18,6 @@ app.use(helmet.contentSecurityPolicy({
   directives: {
     defaultSrc: ["'self'"],
     scriptSrc: ["'self'", 'trusted-cdn.com'],
-    styleSrc: ["'self'", "'unsafe-inline'"],
-    imgSrc: ["'self'", "data:"],
-    connectSrc: ["'self'"],
-    fontSrc: ["'self'"],
-    objectSrc: ["'none'"],
-    frameAncestors: ["'none'"]
   }
 }));
 // app.use(helmet.dnsPrefetchControl());
