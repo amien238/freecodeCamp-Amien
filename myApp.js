@@ -17,7 +17,7 @@ app.use(helmet.hidePoweredBy());
 app.use(helmet.contentSecurityPolicy({
   directives: {
     defaultSrc: ["'self'"],
-    scriptSrc: ["'self'", "trusted-cdn.com"],
+    scriptSrc: ["'self'", 'trusted-cdn.com'],
     styleSrc: ["'self'", "'unsafe-inline'"],
     imgSrc: ["'self'", "data:"],
     connectSrc: ["'self'"],
